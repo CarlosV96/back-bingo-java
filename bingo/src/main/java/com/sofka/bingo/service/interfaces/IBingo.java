@@ -1,36 +1,51 @@
 package com.sofka.bingo.service.interfaces;
 
 import com.sofka.bingo.domain.Game;
-import com.sofka.bingo.domain.Player;
-import com.sofka.bingo.domain.TableGame;
+import com.sofka.bingo.domain.Lobby;
+import com.sofka.bingo.domain.Winner;
 
+import java.io.IOException;
 import java.util.List;
 
+/**
+ * Interfaz para el servicio del bingo
+ */
 public interface IBingo {
 
     /**
-     * Para empezar el juego
-     * @param game
-     * @return
+     * Inserta los jugadores al lobby
      */
-    Game beginGame(Game game);
+    public Lobby insertPlayersLobby(Lobby lobby);
 
     /**
-     * Obtener los jugadores de un juego por el id.
-     * @param idGame id del juego.
+     * Obtener los jugadores que se han logueado
      * @return la lista de los jugadores.
      */
-    List<Player> getPlayersGame(Integer idGame);
-
-
+    public List<Lobby> getPlayersLobby();
 
     /**
-     * Para obtener una tabla
-     * @param tablegame
+     * Elimina los jugadores del lobby para pasarlos al game
+     *
+     */
+    public void deletePlayersLobby();
+
+    /**
+     * Inserta los jugadores al lobby
+     */
+    public Game insertPlayersGame(Game game);
+
+    /**
+     * Obtener los jugadores logueados
      * @return
      */
-    TableGame generateTable(TableGame tablegame);
-    //TableGame generateTable(Game game);
-    //Comprobar el ganador
+    public List<Game> getPlayersGame(); //throws IOException, InterruptedException;
 
+    //public Game deletePlayersGame(Integer id);
+
+
+    public Winner winner(Winner winner);
+
+    public List<Winner> getWinner();
+
+    //Winner deleteWinner(Integer id);
 }
