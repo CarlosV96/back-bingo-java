@@ -4,11 +4,14 @@ import com.sofka.bingo.domain.Game;
 import com.sofka.bingo.domain.Lobby;
 import com.sofka.bingo.domain.Winner;
 
-import java.io.IOException;
 import java.util.List;
 
 /**
  * Interfaz para el servicio del bingo
+ *
+ * @author Carlos Valencia <caliche-9696@hotmail.com>
+ * @version 1.0.0 2022-07-07
+ * @since 1.0.0
  */
 public interface IBingo {
 
@@ -25,7 +28,6 @@ public interface IBingo {
 
     /**
      * Elimina los jugadores del lobby para pasarlos al game
-     *
      */
     public void deletePlayersLobby();
 
@@ -38,14 +40,29 @@ public interface IBingo {
      * Obtener los jugadores logueados
      * @return
      */
-    public List<Game> getPlayersGame(); //throws IOException, InterruptedException;
+    public List<Game> getPlayersGame();
 
-    //public Game deletePlayersGame(Integer id);
+    /**
+     * Elimina los jugadores de la tabla game
+     */
+    public void deletePlayersGame();
 
-
+    /**
+     * Inserta el ganador a la tabla winner
+     *
+     * @param winner objeto winner a crear.
+     * @return Objecto del winner creado
+     */
     public Winner winner(Winner winner);
 
+    /**
+     * Devuelve el jugador ganador
+     * @return El jugador de la tabla winner
+     */
     public List<Winner> getWinner();
 
-    //Winner deleteWinner(Integer id);
+    /**
+     * Elimina el ganador para empezar nuevamente desde cero.
+     */
+    public void deleteWinner();
 }
